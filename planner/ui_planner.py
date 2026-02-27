@@ -1,6 +1,7 @@
 import os
 import sys
 import service_planner as sp
+import Classes as c
 
 def ui_planner():
 
@@ -70,7 +71,9 @@ def add():
   time = input('Enter time this new task (HH:MM)(19:30) - ')
   text = input('Enter text this some for this task      - ')
 
-  bool = sp.add_task(date,time,text)
+  id = sp.new_id()
+  event = c.Event(id,date,time,text)
+  bool = sp.add_task(event)
 
   if not bool:
     print('Error')
@@ -89,7 +92,7 @@ def load():
   
   for i in list_load:
 
-    print(f'{i['id']:<5}{i['Date']:<15}{i['Time']:<12}{i['Text']:<50}')
+    print(f'{i['Id']:<5}{i['Date']:<15}{i['Time']:<12}{i['Text']:<50}{i['Status']}')
 
 def remove():
 

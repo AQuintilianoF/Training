@@ -7,4 +7,7 @@ def main ():
     ui.ui_planner()
 
 
-main()
+
+
+if __name__ == '__main__':
+    main()

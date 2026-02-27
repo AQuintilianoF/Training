@@ -1,19 +1,31 @@
 from datetime import datetime, timezone, time, timedelta
 import json_resp as j
-import os
 
 
-def add_task( date, time, text):
 
 
-    task_list = {'id':0,'Date':date,'Time':time,'Text':text}
+def add_task(self):
 
-    bool = j.save(task_list)
+    event_dict = {
+    "Id": self.id,
+    "Date": self.date,
+    "Time": self.time,
+    "Text": self.text,
+    "Status": self.status,
+                    }
+
+    bool = j.save(event_dict)
 
     if not bool:
         return False
 
     return True
+
+def new_id():
+
+    id = j.new_id()
+
+    return id
 
 def load_task():
 
